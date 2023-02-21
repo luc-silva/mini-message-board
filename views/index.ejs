@@ -15,18 +15,22 @@
         <h1>Message Board</h1>
       </header>
       <div class="board">
-        <% messages.forEach(message => { %>
+        <% messages.forEach(({user, added, text}) => { %>
           <div class="board__item">
             <div class="item__header">
-              <span> By <%= message.user %>, </span>
-              <span> <%= message.added.getUTCDate() %> </span>
+              <span> By <%= user %>, </span>
+              <span> <%= added.getUTCDate() %>/<%= added.getUTCMonth()+1%>/<%= added.getUTCFullYear()%> </span>
             </div>
             <div class="item__text"">
-              <%= message.text %>
+              <%= text %>
             </div>
           </div>
         <% }) %>
       </div>
+      <form method="post" action="/new" class="form">
+        <input type="text" name="textInput" class="form__textinput" required placeholder="Send message"/>
+        <input type="submit" class="form__submit"/>
+      </form>
     </main>
   </body>
 </html>
