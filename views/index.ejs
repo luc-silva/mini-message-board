@@ -10,15 +10,23 @@
     </style>
   </head>
   <body>
-    <h1>Message Board</h1>
-    <div>
-      <% messages.forEach(message => { %>
-        <span> <%= message.user %></span>
-        <div>
-          <%= message.text %>
-        </div>
-        <span> <%= message.added %> </span>
-      <% }) %>
-    </div>
+    <main class="message__board">
+      <header>
+        <h1>Message Board</h1>
+      </header>
+      <div class="board">
+        <% messages.forEach(message => { %>
+          <div class="board__item">
+            <div class="item__header">
+              <span> By <%= message.user %>, </span>
+              <span> <%= message.added.getUTCDate() %> </span>
+            </div>
+            <div class="item__text"">
+              <%= message.text %>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </main>
   </body>
 </html>
